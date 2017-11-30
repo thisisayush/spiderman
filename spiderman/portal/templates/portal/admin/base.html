@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}Base{% endblock %}</title>
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <link rel="stylesheet" href="{% static 'portal/css/bootstrap.min.css' %}" />
+        <link rel="stylesheet" href="{% static 'portal/css/font-awesome.min.css' %}" />
+        <style>
+            .link-unstyled{
+                color: inherit;
+                text-decoration: none!important;
+            }
+            .link-unstyled:hover,
+            .link-unstyled:active,
+            .link-unstyled:focus,{
+                color: inherit;
+                text-decoration: none!important;
+            }
+            #primaryMenu{
+                height: 55px;
+            }
+            .app{
+                margin-top: 55px;
+            }
+            .sidebar{
+                position: fixed;
+                width:200px;
+                height: calc(100vh - 55px);
+            }
+            .content{
+                position: fixed;
+                margin-left: 200px;
+                height: calc(100vh - 55px);
+            }
+        </style>
+    </head>
+    <body>
+        {% include 'portal/admin/components/menu.html' %}
+        <div class="app">
+            <div class="sidebar">
+            {% include 'portal/admin/components/sidebar.html' %}
+            </div>
+            <div class="container-fluid content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        {% block content %}
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="{% static 'portal/js/jquery.min.js' %}"></script>
+        <script src="{% static 'portal/js/popper.min.js' %}"></script>
+        <script src="{% static 'portal/js/bootstrap.min.js' %}"></script>
+    </body>
+</html>
